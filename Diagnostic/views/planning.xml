@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- tree view of the planning model -->
+   <record id="planning_tree" model="ir.ui.view">
+            <field name="name">diagnosis.planning.tree</field>
+            <field name="model">diagnosis.planning</field>
+            <field name="arch" type="xml">
+                <tree string="Planning">
+                    <field name="company_name"/>
+                    <field name="project"/>
+                    <field name="author"/>
+                </tree>
+            </field>
+    </record>
+
+    <!-- form view of the planning model -->
+    <record id="planning_form" model="ir.ui.view">
+            <field name="name">diagnosis.planning.form</field>
+            <field name="model">diagnosis.planning</field>
+            <field name="arch" type="xml">
+                <form string="Planning">
+                    <sheet>
+                       <group>
+                           <field name="company_name"/>
+                           <field name="project"/>
+                           <field name="author"/>
+                       </group>
+                        <notebook>
+                            <page string="Planning">
+                                <field name="planning_lines">
+                                    <tree editable="botton">
+                                        <field name="theme"/>
+                                        <field name="interlocutors"/>
+                                        <field name="contact"/>
+                                        <field name="intervener"/>
+                                        <field name="week"/>
+                                        <field name="date"/>
+                                        <field name="hour"/>
+                                        <field name="time"/>
+                                        <field name="status"/>
+                                        <field name="planning_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Other Information">
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" option="{'post_refresh': 'recipients'}"/>
+                </div>
+                </form>
+            </field>
+    </record>
+
+    <!-- action of the planning menu -->
+     <record id="action_planning" model="ir.actions.act_window">
+            <field name="name">Planning</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">diagnosis.planning</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create your first planning
+              </p>
+            </field>
+        </record>
+
+    <menuitem id="diagnosis_root" name="Diagnosis" sequence="0"/>
+    <menuitem id="diagnosis_planning" name="Planning" parent="diagnosis_root" action="action_planning"/>
+
+</odoo>

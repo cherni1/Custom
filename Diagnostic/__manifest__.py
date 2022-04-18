@@ -1,0 +1,25 @@
+{
+    'name': 'Diagnostic',
+    'version': '1.6',
+    'category': '',
+    'sequence': 15,
+    'summary': 'module for business diagnostics',
+    'description': "",
+    'depends': [
+              'mail',
+           ],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/sequence.xml',
+        'views/project.xml',
+        'views/planning.xml',
+        'views/process.xml',
+    ],
+    'demo': [],
+    'css': [],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'assets': {},
+    'license': 'LGPL-3',
+}

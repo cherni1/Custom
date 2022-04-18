@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_diagnosis_project,access.diagnosis.project,model_diagnosis_project,,1,1,1,1
+access_diagnosis_planning,access.diagnosis.planning,model_diagnosis_planning,,1,1,1,1
+access_diagnosis_process,access.diagnosis.process,model_diagnosis_process,,1,1,1,1
+access_diagnosis_planning_lines,access.diagnosis.planning.lines,model_diagnosis_planning_lines,,1,1,1,1
+access_diagnosis_process_lines,access.diagnosis.process.lines,model_diagnosis_process_lines,,1,1,1,1

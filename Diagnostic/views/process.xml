@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <!-- tree view of the process model -->
+   <record id="process_tree" model="ir.ui.view">
+            <field name="name">diagnosis.process.tree</field>
+            <field name="model">diagnosis.process</field>
+            <field name="arch" type="xml">
+                <tree string="Process">
+                    <field name="theme"/>
+                    <field name="project_name"/>
+                    <field name="animator"/>
+                    <field name="participants"/>
+                </tree>
+            </field>
+    </record>
+    <!--form view of the process model-->
+    <record id="process_form" model="ir.ui.view">
+        <field name="name">diagnosis.process.form</field>
+        <field name="model">diagnosis.process</field>
+        <field name="arch" type="xml">
+            <form string="Process">
+               <sheet>
+                <group>
+                    <group><field name="theme"/></group>
+                    <group><field name="project_name"/></group>
+                    <group><field name="animator"/></group>
+                    <group><field name="participants"/></group>
+                </group>
+                   <notebook>
+                            <page string="Axes">
+                                <field name="process_lines">
+                                    <tree editable="botton">
+                                        <field name="axes"/>
+                                        <field name="item_for_discussion"/>
+                                        <field name="comment_and_observation"/>
+                                        <field name="note"/>
+                                        <field name="process_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Other Information">
+
+                            </page>
+                        </notebook>
+               </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" option="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--action of the process menu-->
+   <record id="action_diagnosis_process" model="ir.actions.act_window">
+            <field name="name">Process</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">diagnosis.process</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create your first process
+              </p>
+            </field>
+        </record>
+
+    <menuitem id="diagnosis_root" name="Diagnosis" sequence="1"/>
+    <menuitem id="diagnosis_process" name="Process" parent="diagnosis_root" action="action_diagnosis_process"/>
+
+
+</odoo>
